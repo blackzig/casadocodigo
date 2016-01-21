@@ -24,16 +24,16 @@ public class Produto implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     
-    private String tiulo;
+    private String titulo;
     private String descricao;
     private int paginas;
 
     public String getTiulo() {
-        return tiulo;
+        return titulo;
     }
 
     public void setTiulo(String tiulo) {
-        this.tiulo = tiulo;
+        this.titulo = tiulo;
     }
 
     public String getDescricao() {
@@ -54,7 +54,7 @@ public class Produto implements Serializable {
 
     @Override
     public String toString() {
-        return "Produto{" + "tiulo=" + tiulo + ", descricao=" + descricao + ", paginas=" + paginas + '}';
+        return "Produto{" + "tiulo=" + titulo + ", descricao=" + descricao + ", paginas=" + paginas + '}';
     }
     
     
