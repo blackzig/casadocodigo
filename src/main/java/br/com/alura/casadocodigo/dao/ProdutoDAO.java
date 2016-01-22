@@ -6,6 +6,7 @@
 package br.com.alura.casadocodigo.dao;
 
 import br.com.alura.casadocodigo.models.Produto;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
@@ -26,4 +27,7 @@ public class ProdutoDAO {
         manager.persist(produto);
     }
     
+    public List<Produto> listar(){
+        return manager.createQuery("select p from Produto p", Produto.class).getResultList();
+    }
 }

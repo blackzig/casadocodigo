@@ -6,6 +6,7 @@
 package br.com.alura.casadocodigo.conf;
 
 
+import javax.servlet.Filter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 /**
@@ -30,4 +31,11 @@ public class ServletSpringMVC extends AbstractAnnotationConfigDispatcherServletI
         return new String[]{"/"};
     }
 
+    @Override
+    protected Filter[] getServletFilters() {
+       
+        return new Filter[]{};
+    }
+    
+   
 }
