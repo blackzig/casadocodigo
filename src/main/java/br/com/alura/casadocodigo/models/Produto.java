@@ -6,6 +6,8 @@
 package br.com.alura.casadocodigo.models;
 
 import java.io.Serializable;
+import java.util.List;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -27,13 +29,32 @@ public class Produto implements Serializable {
     private String titulo;
     private String descricao;
     private int paginas;
+    
+    @ElementCollection
+    private List<Preco> precos; 
 
-    public String getTiulo() {
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public List<Preco> getPrecos() {
+        return precos;
+    }
+
+    public void setPrecos(List<Preco> precos) {
+        this.precos = precos;
+    }
+
+    public String getTitulo() {
         return titulo;
     }
 
-    public void setTiulo(String tiulo) {
-        this.titulo = tiulo;
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
     }
 
     public String getDescricao() {
@@ -54,8 +75,10 @@ public class Produto implements Serializable {
 
     @Override
     public String toString() {
-        return "Produto{" + "tiulo=" + titulo + ", descricao=" + descricao + ", paginas=" + paginas + '}';
+        return "Produto{" + "id=" + id + ", titulo=" + titulo + ", descricao=" + descricao + ", paginas=" + paginas + '}';
     }
+
+    
     
     
 }
