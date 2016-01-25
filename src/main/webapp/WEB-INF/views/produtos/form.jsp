@@ -6,33 +6,51 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@taglib prefix="s" uri="http://www.springframework.org/tags" %>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Livros de Programação</title>
     </head>
-    <form action="/casadocodigo/produtos" method="post">
+    <form:form action="${s:mvcUrl('PC#gravar').build()}" method="post" 
+               commandName="produto" enctype="multipart/form-data">
         <div>
             <label>Título</label>
-            <input type="text" name="titulo" />
+
+            <form:input path="titulo" />
+            <form:errors path="titulo" />
         </div>
         <div>
             <label>Descrição</label>
-            <textarea rows="10" cols="20" name="descricao"></textarea>
+
+            <form:textarea path="descricao" rows="10" cols="20" />
+            <form:errors path="descricao" />
         </div>
         <div>
             <label>Páginas</label>
-            <input type="text" name="paginas"/>
+
+            <form:input path="paginas" />
+            <form:errors path="paginas" />
+        </div>
+        <div>
+            <label>Data de Lançamento</label>
+
+            <form:input path="dataLancamento"/>
+            <form:errors path="dataLancamento" />
         </div>
         <c:forEach items="${tipos}" var="tipoPreco" varStatus="status">
             <div>
                 <label>${tipoPreco}</label>
-                <input type="text" name="precos[${status.index}].valor" >
-                <input type="hidden" name="precos[${status.index}].tipoPreco"  value="${tipoPreco}" >
+                <form:input path="precos[${status.index}].valor" />
+                <form:hidden path="precos[${status.index}].tipoPreco"  value="${tipoPreco}" />
             </div>
         </c:forEach>
+        <div>
+            <label>Sumário</label>
+            <input name="sumario" type="file" />
+        </div>
         <button type="submit">Cadastrar</button>
-    </form>
+    </form:form>
 </html>
