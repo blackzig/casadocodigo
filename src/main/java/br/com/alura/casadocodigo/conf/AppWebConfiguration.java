@@ -8,6 +8,7 @@ package br.com.alura.casadocodigo.conf;
 import br.com.alura.casadocodigo.controllers.HomeController;
 import br.com.alura.casadocodigo.dao.ProdutoDAO;
 import br.com.alura.casadocodigo.infra.FileSaver;
+import br.com.alura.casadocodigo.models.CarrinhoCompras;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -30,7 +31,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
  */
 @EnableWebMvc
 @ComponentScan(basePackageClasses = {HomeController.class, ProdutoDAO.class,
-    FileSaver.class})
+    FileSaver.class, CarrinhoCompras.class})
 public class AppWebConfiguration {
 
     @Bean
@@ -38,6 +39,8 @@ public class AppWebConfiguration {
         InternalResourceViewResolver resolver = new InternalResourceViewResolver();
         resolver.setPrefix("/WEB-INF/views/");
         resolver.setSuffix(".jsp");
+        
+        resolver.setExposedContextBeanNames("carrinhoCompras");
 
         return resolver;
     }
