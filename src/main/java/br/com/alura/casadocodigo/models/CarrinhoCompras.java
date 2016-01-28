@@ -8,13 +8,16 @@ package br.com.alura.casadocodigo.models;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Objects;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
+import org.springframework.web.context.WebApplicationContext;
 
 /**
  *
  * @author Michel A. Medeiros
  */
 @Component
+@Scope(value=WebApplicationContext.SCOPE_SESSION)
 public class CarrinhoCompras {
 
     private final Map<CarrinhoItem, Integer> itens = new LinkedHashMap<>();
